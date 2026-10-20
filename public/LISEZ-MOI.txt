@@ -1,0 +1,14 @@
+SDUS Tennis - Logo web
+
+Logo fidele au fichier original fourni, detoure et exporte en PNG transparent et SVG vectorise.
+
+logo-sdus-noir.svg : fond clair
+logo-sdus-blanc.svg : fond sombre
+icone-sdus.svg : symbole seul
+favicon.png : icone pour onglet navigateur
+
+Sur GitHub : ajoutez les fichiers dans public/logos/.
+Dans React, utilisez par exemple <img src="/logos/logo-sdus-noir.svg" alt="Saint-Denis US Tennis" />.
+Pour le favicon, dans index.html : <link rel="icon" type="image/png" href="/logos/favicon.png" />.
+
+Le logo est issu de votre image originale, pas du logo reinterprete par IA.
