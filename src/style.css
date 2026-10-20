@@ -111,3 +111,7 @@
 .footer-logo .club-wordmark{color:#fff;font-size:24px}
 .footer-logo .club-wordmark small{color:#b6cad4}
 @media(max-width:650px){.site-header .brand{gap:7px}.site-header .brand .club-symbol{width:30px!important;height:43px!important}.site-header .club-wordmark{font-size:18px}.site-header .club-wordmark small{font-size:6px;letter-spacing:1px}.footer-logo .club-wordmark{font-size:22px}}
+
+/* Navigation SDUS — rubrique Accueil */
+.nav-menu-heading{display:block;padding:10px 12px 5px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#008c60;}
+.nav-dropdown-panel{min-width:245px;}
