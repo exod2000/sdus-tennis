@@ -115,3 +115,8 @@
 /* Navigation SDUS — rubrique Accueil */
 .nav-menu-heading{display:block;padding:10px 12px 5px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#008c60;}
 .nav-dropdown-panel{min-width:245px;}
+
+/* Correctif : le menu Accueil ne reste plus ouvert après navigation. */
+.nav-dropdown:hover .nav-dropdown-panel,.nav-dropdown:focus-within .nav-dropdown-panel{display:none}
+.nav-dropdown.is-expanded .nav-dropdown-panel{display:flex}
+@media(max-width:900px){.nav-dropdown-panel{display:none}.nav-dropdown.is-expanded .nav-dropdown-panel{display:flex}}
