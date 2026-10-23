@@ -180,3 +180,11 @@ body{background:#f9fbfa}
 @keyframes wow-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:700px){.hero:after{display:none}.feature-card:hover{transform:none}.page-hero:after{right:-250px}}
 @media(prefers-reduced-motion:reduce){.hero-copy,.hero-buttons{animation:none}.feature-card,.nav-cta,.button-green,.hero .button{transition:none}}
+
+/* Actualités publiques depuis Supabase */
+.public-news-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;margin-bottom:48px}
+.public-news-card{background:#fff;border:1px solid #dbe8e2;border-radius:18px;padding:28px;box-shadow:0 10px 28px rgba(5,45,32,.05)}
+.public-news-card h2{font-size:clamp(1.2rem,2vw,1.55rem);margin:12px 0;color:#0c3028}
+.public-news-card p{white-space:pre-line;overflow-wrap:anywhere;line-height:1.65;color:#415b53}
+.public-news-date{display:flex;align-items:center;gap:8px;color:#087d52;font-size:.9rem}
+.public-news-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;color:#087d52;font-weight:700}
