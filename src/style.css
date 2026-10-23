@@ -143,3 +143,11 @@
 @keyframes partners-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(max-width:650px){.partners-marquee .partner-tile{width:210px;min-height:100px}}
 @media(prefers-reduced-motion:reduce){.partners-marquee-track{animation:none}.partners-marquee{overflow-x:auto;mask-image:none;-webkit-mask-image:none}}
+
+/* Politique de confidentialité */
+.privacy-policy{max-width:880px;margin-inline:auto;padding-top:34px;padding-bottom:70px;line-height:1.75}
+.privacy-policy h2{font-size:1.25rem;margin:30px 0 10px}
+.privacy-policy p{margin:0 0 14px}
+.privacy-policy a{text-decoration:underline;text-underline-offset:3px}
+.privacy-note{border-left:4px solid #d6a43a;background:#fff8e7;padding:16px 18px;border-radius:6px;color:#563c09}
+.privacy-updated{font-size:.88rem;opacity:.7;margin-top:35px!important}
