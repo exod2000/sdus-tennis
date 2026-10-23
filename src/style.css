@@ -151,3 +151,32 @@
 .privacy-policy a{text-decoration:underline;text-underline-offset:3px}
 .privacy-note{border-left:4px solid #d6a43a;background:#fff8e7;padding:16px 18px;border-radius:6px;color:#563c09}
 .privacy-updated{font-size:.88rem;opacity:.7;margin-top:35px!important}
+
+
+/* SDUS Tennis - design WOW v1 : visuel uniquement, facilement reversible */
+:root{--wow-ease:cubic-bezier(.2,.8,.2,1)}
+body{background:#f9fbfa}
+.site-header{background:rgba(255,255,255,.94);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 5px 30px rgba(6,38,45,.06)}
+.brand-mark{box-shadow:0 0 0 5px rgba(181,219,32,.14),inset -5px -4px 0 #89ba18}
+.nav-cta,.button-green{box-shadow:0 8px 24px rgba(0,166,90,.22);transition:transform .3s var(--wow-ease),box-shadow .3s var(--wow-ease),background .3s}
+.nav-cta:hover,.button-green:hover{transform:translateY(-3px);box-shadow:0 13px 30px rgba(0,166,90,.28)}
+.hero{isolation:isolate;overflow:hidden}
+.hero:after{content:'';position:absolute;inset:auto -12% -50% 45%;height:90%;z-index:-1;pointer-events:none;background:radial-gradient(ellipse,rgba(183,224,51,.23),transparent 65%)}
+.hero-copy{animation:wow-rise .85s var(--wow-ease) both}
+.hero h1{text-shadow:0 8px 35px rgba(0,0,0,.2)}
+.hero h1 em{background:linear-gradient(110deg,#e2ff80,#b6df34 50%,#f1ffbc);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero-buttons{animation:wow-rise .95s .15s var(--wow-ease) both}
+.hero .button{transition:transform .3s var(--wow-ease),box-shadow .3s var(--wow-ease)}
+.hero .button:hover{transform:translateY(-4px);box-shadow:0 14px 35px rgba(0,0,0,.18)}
+.feature-card{position:relative;overflow:hidden;box-shadow:0 14px 38px rgba(5,38,45,.11);transition:transform .45s var(--wow-ease),box-shadow .45s var(--wow-ease)}
+.feature-card:after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(145deg,rgba(255,255,255,.1),transparent 48%);opacity:0;transition:opacity .4s}
+.feature-card:hover{transform:translateY(-9px);box-shadow:0 24px 50px rgba(5,38,45,.18)}
+.feature-card:hover:after{opacity:1}
+.page-hero{position:relative;overflow:hidden;background:linear-gradient(120deg,#061e30 0%,#0a4254 65%,#0a634c 130%)}
+.page-hero:after{content:'';position:absolute;right:-110px;top:-160px;width:430px;height:430px;border:1px solid rgba(186,226,53,.2);border-radius:50%;box-shadow:0 0 0 55px rgba(186,226,53,.035),0 0 0 115px rgba(186,226,53,.025);pointer-events:none}
+.page-hero h1{position:relative;z-index:1}
+.partner-tile{transition:transform .3s var(--wow-ease),box-shadow .3s var(--wow-ease)}
+.footer{background:linear-gradient(145deg,#041c2c,#073545)}
+@keyframes wow-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){.hero:after{display:none}.feature-card:hover{transform:none}.page-hero:after{right:-250px}}
+@media(prefers-reduced-motion:reduce){.hero-copy,.hero-buttons{animation:none}.feature-card,.nav-cta,.button-green,.hero .button{transition:none}}
