@@ -241,3 +241,26 @@ body{background:#f9fbfa}
 #choisir-cours .finder-price{font-size:clamp(36px,5vw,52px);letter-spacing:-.04em}
 #choisir-cours .finder-links{margin-top:24px}
 @media(max-width:650px){#choisir-cours .finder{border-radius:20px;padding:22px 18px}#choisir-cours .finder-options{grid-template-columns:1fr}#choisir-cours .finder-options button{min-height:58px}#choisir-cours .finder-step{padding-bottom:20px;margin-bottom:20px}}
+
+
+/* HERO PANORAMIQUE SDUS — conserve la photo et le contenu actuels */
+.hero {
+  min-height: clamp(650px, 88svh, 1100px);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center 52%;
+}
+.hero-inner {
+  min-height: clamp(650px, 88svh, 1100px);
+  display: flex;
+  align-items: center;
+}
+/* Une image de fond proportionnelle : elle se recadre, sans s'étirer. */
+@media (max-width: 760px) {
+  .hero, .hero-inner { min-height: clamp(610px, 82svh, 900px); }
+  .hero { background-position: 59% center; }
+}
+@media (max-width: 420px) {
+  .hero, .hero-inner { min-height: 78svh; min-height: max(590px, 78svh); }
+  .hero { background-position: 60% center; }
+}
