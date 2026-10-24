@@ -289,3 +289,29 @@ body{background:#f9fbfa}
   .home-ticker-track{animation:none;max-width:100%;width:auto}
   .home-ticker-track span{white-space:normal}
 }
+
+/* Accueil : photo + bandeau occupent la hauteur de la fenêtre, même en zoomant.
+   La position est recalculée au changement de zoom par ResizeObserver/resize. */
+.hero{
+  height:calc(100svh - var(--sdus-space-above, 124px) - var(--sdus-ticker-height, 47px));
+  min-height:0;
+  background-size:cover;
+  background-position:center center;
+  overflow:hidden;
+}
+.hero-inner{
+  height:100%;
+  min-height:0;
+  box-sizing:border-box;
+}
+.hero-copy{padding-block:clamp(12px, 3vh, 45px)}
+.home-ticker{height:47px;min-height:47px;box-sizing:border-box}
+@media(max-width:760px){
+  .hero,.hero-inner{min-height:0;height:auto}
+  .hero{height:calc(100svh - var(--sdus-space-above, 124px) - var(--sdus-ticker-height, 47px));background-position:59% center}
+  .hero-inner{height:100%}
+  .hero-copy{padding-block:12px}
+}
+@media(max-height:530px){
+  .hero{min-height:340px}
+}
