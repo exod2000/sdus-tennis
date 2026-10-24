@@ -188,3 +188,4 @@ body{background:#f9fbfa}
 .public-news-card p{white-space:pre-line;overflow-wrap:anywhere;line-height:1.65;color:#415b53}
 .public-news-date{display:flex;align-items:center;gap:8px;color:#087d52;font-size:.9rem}
 .public-news-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;color:#087d52;font-weight:700}
+\n/* Annonces de stages publiees depuis le tableau de bord */\n.stage-published-body{white-space:pre-line;overflow-wrap:anywhere;line-height:1.65;margin:12px 0 18px}\n
