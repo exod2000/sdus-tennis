@@ -264,3 +264,16 @@ body{background:#f9fbfa}
   .hero, .hero-inner { min-height: 78svh; min-height: max(590px, 78svh); }
   .hero { background-position: 60% center; }
 }
+
+/* Bandeau bleu marine et vert defilant sur la page d'accueil */
+.home-ticker{background:#092b3e;color:#ffffff;min-height:47px;display:flex;align-items:center;overflow:hidden;border-block:1px solid rgba(255,255,255,.16)}
+.home-ticker-viewport{width:100%;overflow:hidden}
+.home-ticker-track{display:flex;width:max-content;align-items:center;animation:sdus-ticker 34s linear infinite}
+.home-ticker-track span{display:block;flex:0 0 auto;padding:11px 4rem;font-size:14px;font-weight:850;letter-spacing:.035em;white-space:nowrap}
+.home-ticker-track span::before{content:'🎾';margin-right:1rem}
+.home-ticker:hover .home-ticker-track{animation-play-state:paused}
+@keyframes sdus-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.home-ticker-track{animation:none;max-width:100%;width:auto}.home-ticker-track span{white-space:normal}.home-ticker-track span:not(:first-child){display:none}}
+
+/* Accent vert SDUS Tennis */
+.home-ticker-track span::before{color:#31d6a2}
