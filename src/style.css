@@ -277,3 +277,15 @@ body{background:#f9fbfa}
 
 /* Accent vert SDUS Tennis */
 .home-ticker-track span::before{color:#31d6a2}
+
+/* Correction : un seul message visible, qui defile de droite a gauche */
+.home-ticker-track{display:block;width:max-content;max-width:none;animation:sdus-ticker-single 18s linear infinite;will-change:transform}
+.home-ticker-track span{display:block;padding:11px 2rem}
+@keyframes sdus-ticker-single{
+  from{transform:translateX(100vw)}
+  to{transform:translateX(-100%)}
+}
+@media(prefers-reduced-motion:reduce){
+  .home-ticker-track{animation:none;max-width:100%;width:auto}
+  .home-ticker-track span{white-space:normal}
+}
