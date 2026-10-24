@@ -11,7 +11,7 @@ const email='sdus.tennis@gmail.com';
 const phone='07 66 75 32 22';
 const instagram='https://www.instagram.com/sdus_tennis/';
 const directions='https://www.google.com/maps/dir/?api=1&destination=48.947067,2.351393';
-const images={hero:'/photos/accueil-terrain.webp',club:'/photos/IMG_1757.webp',junior:'/photos/IMG_1755.webp',adult:'/photos/IMG_1754.webp'};
+const images={hero:'/photos/accueil-terrain.webp',club:'/photos/IMG_1757.webp',junior:'/photos/ecole-tennis-jeunes.webp',adult:'/photos/cours-tennis-adultes.webp'};
 const nav=[['Accueil','/'],['Le club','/club'],['École de tennis','/ecole-de-tennis'],['Cours adultes','/cours-adultes'],['Stages jeunes','/stages-jeunes'],['Nos enseignants','/enseignants'],['Équipe dirigeante','/equipe-dirigeante'],['Règlement du club','/reglement'],['Tarifs & inscriptions','/tarifs-inscriptions'],['Actualités','/actualites'],['Contact','/contact']];
 const clubMenu=[['Présentation du club','/club'],['Nos enseignants','/enseignants'],['Équipe dirigeante','/equipe-dirigeante'],['Règlement du club','/reglement']];
 const accueilMenu=[['Le club',null],...clubMenu,['École de tennis','/ecole-de-tennis'],['Cours adultes','/cours-adultes']];
