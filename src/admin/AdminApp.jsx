@@ -9,7 +9,7 @@ const supabase=supabaseUrl&&supabaseKey?createClient(supabaseUrl,supabaseKey,{
 }):null;
 const names={super_admin:'Super-administrateur',admin:'Administrateur',editor:'Éditeur'};
 const callbackPath='/admin/auth/callback';
-const sections=[['overview','Vue d’ensemble'],['news','Actualités'],['camps','Stages jeunes'],['prices','Tarifs et inscriptions'],['teachers','Enseignants'],['committee','Équipe dirigeante'],['admins','Administrateurs']];
+const sections=[['overview','Vue d’ensemble'],['banner','Bandeau défilant'],['news','Actualités'],['camps','Stages jeunes'],['prices','Tarifs et inscriptions'],['teachers','Enseignants'],['committee','Équipe dirigeante'],['admins','Administrateurs']];
 const contentTables={news:'club_news',camps:'club_camps',prices:'club_prices',teachers:'club_teachers',committee:'club_committee'};
 
 export default function AdminApp(){
@@ -111,6 +111,20 @@ export default function AdminApp(){
 
 function Dashboard({role,email,section,setSection,logout}){
  const [rows,setRows]=useState([]),[status,setStatus]=useState(''),[busy,setBusy]=useState(false),[editing,setEditing]=useState(null),[form,setForm]=useState({title:'',body:'',date:'',end_date:'',link:'',image_url:'',age_range:'',schedule:'',price:'',status:'open',published:false}),[users,setUsers]=useState([]),[newsImage,setNewsImage]=useState(null),[campImage,setCampImage]=useState(null);
+ const [banner,setBanner]=useState({message:'',enabled:false});
+ const [bannerBusy,setBannerBusy]=useState(false);
+ useEffect(()=>{
+  if(section!=='banner')return;
+  let active=true;
+  supabase.from('club_banner').select('message,enabled').eq('id',1).maybeSingle()
+   .then(({data,error})=>{if(!active)return;if(error)setStatus('Bandeau indisponible : exécute le script SQL fourni.');else setBanner({message:data?.message||'',enabled:!!data?.enabled})});
+  return()=>{active=false};
+ },[section]);
+ async function saveBanner(e){
+  e.preventDefault();setBannerBusy(true);setStatus('');
+  const {error}=await supabase.from('club_banner').upsert({id:1,message:banner.message.trim(),enabled:banner.enabled},{onConflict:'id'});
+  setBannerBusy(false);setStatus(error?'Enregistrement impossible : vérifie le script SQL et tes droits.':'Bandeau enregistré. Actualise la page d’accueil pour le voir.');
+ }
  const table=contentTables[section];
  async function load(){setStatus('');setEditing(null);if(section==='admins'){
   const {data,error}=await supabase.rpc('list_club_admins');setUsers(data||[]);if(error)setStatus('Pour afficher les administrateurs, exécute d’abord le script SQL fourni.');return;
@@ -144,6 +158,13 @@ function Dashboard({role,email,section,setSection,logout}){
  const result=editing==='new'?await supabase.from(table).insert(record):await supabase.from(table).update(record).eq('id',editing);setBusy(false);if(result.error){setStatus('Enregistrement refusé : vérifie les droits ou le script SQL.');return;}setEditing(null);await load();setStatus('Enregistré avec succès.');}
  async function remove(r){if(!confirm('Supprimer définitivement « '+r.title+' » ?'))return;setBusy(true);const {error}=await supabase.from(table).delete().eq('id',r.id);setBusy(false);await load();setStatus(error?'Suppression refusée.':'Élément supprimé.');}
  return <div className="dash"><aside className="dash-sidebar"><div className="dash-account"><b>SDUS Tennis</b><small>{names[role]}</small></div><nav aria-label="Menu administration">{sections.filter(([id])=>id!=='admins'||role==='super_admin').map(([id,label])=><button key={id} className={section===id?'active':''} onClick={()=>setSection(id)}>{label}</button>)}</nav><button className="dash-logout" onClick={logout}>Se déconnecter</button></aside><section className="dash-content"><div className="dash-top"><div><span className="admin-eyebrow">ESPACE PRIVÉ · BUREAU DU CLUB</span><h1>{sections.find(([id])=>id===section)?.[1]}</h1><p>Connecté : {email}</p></div>{table&&!editing&&<button onClick={startNew}>+ Ajouter</button>}</div><div className="admin-notice admin-ok">Session vérifiée · {names[role]}</div>
+ {section==='banner'&&<form className="dash-form" onSubmit={saveBanner}>
+  <h2>Message défilant de l’accueil</h2>
+  <p>Ce texte défile dans le bandeau jaune situé juste sous la grande photo d’accueil. Tu peux le modifier ou le masquer à tout moment.</p>
+  <label>Message à afficher<textarea rows="3" maxLength={220} value={banner.message} onChange={e=>setBanner({...banner,message:e.target.value})} placeholder="Ex. Inscriptions aux stages ouvertes !"/></label>
+  <label className="dash-check"><input type="checkbox" checked={banner.enabled} onChange={e=>setBanner({...banner,enabled:e.target.checked})}/> Afficher le bandeau sur le site</label>
+  <div className="dash-actions"><button disabled={bannerBusy||banner.enabled&&!banner.message.trim()}>{bannerBusy?'Enregistrement…':'Enregistrer le bandeau'}</button></div>
+ </form>}
  {section==='overview'&&<><div className="dash-cards">{sections.filter(([id])=>id!=='overview'&&(id!=='admins'||role==='super_admin')).map(([id,label])=><button key={id} onClick={()=>setSection(id)}><strong>{label}</strong><span>Ouvrir la rubrique →</span></button>)}</div><div className="dash-help"><h2>Bienvenue dans le bureau du club</h2><p>Utilise le menu pour préparer et enregistrer les informations du SDUS Tennis. Les données sont conservées dans Supabase, avec des droits contrôlés côté base de données.</p><p><strong>Important :</strong> les nouvelles fiches sont stockées dans l'administration. Leur affichage automatique sur les pages publiques du site nécessitera de relier ces pages aux données Supabase.</p></div></>}
  {table&&<>{editing!==null?<form className="dash-form" onSubmit={save}><h2>{editing==='new'?'Nouvelle fiche':'Modifier la fiche'}</h2><label>Titre<input required maxLength={160} value={form.title} onChange={e=>setForm({...form,title:e.target.value})}/></label><label>Description<textarea rows="7" value={form.body} onChange={e=>setForm({...form,body:e.target.value})}/></label><label>{section==='camps'?'Date de début':'Date (facultative)'}<input type="date" required={section==='camps'} value={form.date} onChange={e=>setForm({...form,date:e.target.value})}/></label>{section==='camps'&&<><label>Date de fin<input type="date" required min={form.date||undefined} value={form.end_date} onChange={e=>setForm({...form,end_date:e.target.value})}/></label><label>Photo du stage (JPG, PNG, WebP, 5 Mo maximum)<input type="file" accept="image/jpeg,image/png,image/webp" onChange={e=>setCampImage(e.target.files?.[0]||null)}/></label>{campImage?<p>Nouvelle photo : {campImage.name}</p>:form.image_url?<img src={form.image_url} alt="Photo actuelle du stage" style={{width:260,maxWidth:'100%',borderRadius:12}}/>:null}{form.image_url&&<button type="button" className="secondary" onClick={()=>{setForm({...form,image_url:''});setCampImage(null)}}>Retirer la photo</button>}
 <label>Âge / public (facultatif)<input placeholder="Ex. 6 à 17 ans" value={form.age_range} maxLength={100} onChange={e=>setForm({...form,age_range:e.target.value})}/></label>
