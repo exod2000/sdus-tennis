@@ -396,3 +396,38 @@ body{background:#f9fbfa}
 .section.tinted:has(.feature-grid) .feature-card:hover>span:last-child{background:#008a50;transform:translateX(3px)}
 @media(max-width:800px){.section.tinted:has(.feature-grid){padding-block:65px 70px}.section.tinted:has(.feature-grid) .feature-grid{gap:18px}.section.tinted:has(.feature-grid) .feature-card{min-height:380px;padding:26px}.section.tinted:has(.feature-grid) .feature-card::after{display:none}}
 @media(prefers-reduced-motion:reduce){.section.tinted:has(.feature-grid) .feature-card,.section.tinted:has(.feature-grid) .feature-card>span:last-child{transition:none}}
+
+
+/* SDUS Tennis — direction artistique harmonisee sur toutes les pages publiques.
+   Aucune modification aux photos, au hero, au bandeau, ou a l'administration. */
+:root{--sdus-navy:#092b40;--sdus-green:#00a65a;--sdus-mist:#f3faf9;--sdus-border:#dcebe8}
+body{color:var(--sdus-navy)}
+main .section:not(.hero){scroll-margin-top:90px}
+main .section.tinted:not(:has(.feature-grid)){background:linear-gradient(135deg,#f6fbfc 0%,#edf8f5 100%);position:relative}
+main .section .kicker{color:var(--sdus-green);letter-spacing:2.5px;font-weight:900}
+main .section h2{letter-spacing:-.035em}
+main .section p{line-height:1.7}
+main .section .button,main .section a.button{border-radius:999px;transition:transform .22s ease,box-shadow .22s ease,background .22s ease}
+main .section .button:hover,main .section a.button:hover{transform:translateY(-2px);box-shadow:0 10px 25px #062d3c22}
+main .section .button-green{background:var(--sdus-green);color:white}
+main .section .button-green:hover{background:#008c50}
+main .section .info-card,main .section .public-news-card,main .section .mobile-price-card,main .section .partner-tile,main .section .school-practical,main .section .school-faq,main .section .contact-panel{
+ border-radius:22px;border-color:var(--sdus-border);box-shadow:0 12px 35px #082b4010;
+ transition:box-shadow .25s ease,transform .25s ease
+}
+main .section .info-card:hover,main .section .public-news-card:hover,main .section .partner-tile:hover{box-shadow:0 20px 46px #082b4020;transform:translateY(-4px)}
+main .section .about-photo,main .section .join-club-photo{border-radius:25px;overflow:hidden;box-shadow:0 18px 44px #082b4024}
+main .section .public-news-card img,main .section .about-photo img,main .section .join-club-photo img{object-fit:cover}
+main .section .level-tabs button,main .section .finder-options button{border-radius:15px;transition:background .2s ease,border-color .2s ease,transform .2s ease}
+main .section .level-tabs button:hover,main .section .finder-options button:hover{transform:translateY(-2px)}
+main .section .data-table{border-radius:18px;overflow:hidden;box-shadow:0 12px 30px #082b4012}
+main .section .instagram-feed-card{border-radius:18px;overflow:hidden}
+main .section .join-club-layout{border-radius:25px}
+@media(max-width:760px){
+ main .section .info-card,main .section .public-news-card,main .section .mobile-price-card{border-radius:18px}
+ main .section .about-photo,main .section .join-club-photo{border-radius:18px}
+ main .section h2{letter-spacing:-.025em}
+}
+@media(prefers-reduced-motion:reduce){
+ main .section .button,main .section a.button,main .section .info-card,main .section .public-news-card,main .section .partner-tile,main .section .level-tabs button,main .section .finder-options button{transition:none}
+}
