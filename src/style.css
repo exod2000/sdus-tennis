@@ -431,3 +431,25 @@ main .section .join-club-layout{border-radius:25px}
 @media(prefers-reduced-motion:reduce){
  main .section .button,main .section a.button,main .section .info-card,main .section .public-news-card,main .section .partner-tile,main .section .level-tabs button,main .section .finder-options button{transition:none}
 }
+
+
+/* Instagram : presentation compacte, photos et liens reels conserves */
+.instagram-feed{margin-top:32px}
+.instagram-feed-heading{margin-bottom:18px;gap:18px}
+.instagram-feed-heading h2{margin:7px 0 5px}
+.instagram-feed-heading p{line-height:1.5}
+.instagram-feed-grid{gap:16px}
+.instagram-feed-card{aspect-ratio:4/3;border-radius:20px;box-shadow:0 12px 30px rgba(9,43,64,.12);transition:box-shadow .25s ease,transform .25s ease}
+.instagram-feed-card img{object-fit:cover;object-position:center 38%}
+.instagram-feed-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(9,43,64,.2)}
+.instagram-feed-card-overlay{padding:28px 14px 12px;font-size:12px}
+.instagram-feed-profile{border:1px solid #cce7db;border-radius:999px;padding:10px 16px;background:#fff;transition:background .2s ease}
+.instagram-feed-profile:hover{background:#e8f7f0}
+@media(max-width:700px){
+ .instagram-feed{margin-top:24px}
+ .instagram-feed-heading{margin-bottom:15px;gap:12px}
+ .instagram-feed-grid{gap:12px}
+ .instagram-feed-card{min-width:76%;aspect-ratio:4/5;border-radius:16px}
+ .instagram-feed-card-overlay{font-size:12px}
+}
+@media(prefers-reduced-motion:reduce){.instagram-feed-card,.instagram-feed-profile,.instagram-feed-card img{transition:none}}
