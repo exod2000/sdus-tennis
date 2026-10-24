@@ -354,3 +354,25 @@ body{background:#f9fbfa}
 @media(max-height:560px){
   .hero{height:calc(100svh - var(--sdus-space-above, 124px) - var(--sdus-ticker-height, 48px))!important}
 }
+
+/* Format panoramique inspire des proportions de la capture Rafa Nadal Academy.
+   Le bandeau est fin et la photo occupe tout l'espace restant sous l'entete. */
+:root{--sdus-reference-ticker:34px}
+.hero{
+  height:calc(100svh - var(--sdus-space-above, 124px) - var(--sdus-reference-ticker))!important;
+  min-height:0!important;max-height:none!important;
+  background-size:cover!important;background-position:center 52%!important;
+}
+.hero .hero-inner{height:100%!important;min-height:0!important;max-height:100%!important}
+.home-ticker{
+  height:var(--sdus-reference-ticker)!important;
+  min-height:var(--sdus-reference-ticker)!important;
+  max-height:var(--sdus-reference-ticker)!important;
+  box-sizing:border-box!important;
+}
+.home-ticker-track span{padding:7px 2rem!important;font-size:13px!important;line-height:19px!important}
+@media(max-width:760px){
+  :root{--sdus-reference-ticker:38px}
+  .hero{height:calc(100svh - var(--sdus-space-above, 124px) - var(--sdus-reference-ticker))!important; background-position:59% center!important}
+  .home-ticker-track span{font-size:12px!important}
+}
