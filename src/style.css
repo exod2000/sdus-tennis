@@ -315,3 +315,18 @@ body{background:#f9fbfa}
 @media(max-height:530px){
   .hero{min-height:340px}
 }
+
+/* Correctif final : garder la bande visible sous la photo, y compris au zoom Chrome. */
+.hero{
+ height:clamp(280px,calc(100svh - var(--sdus-space-above, 124px) - 48px),1100px)!important;
+ min-height:0!important;max-height:none!important;
+ background-size:cover!important;background-position:center center!important;
+}
+.hero .hero-inner{height:100%!important;min-height:0!important;max-height:100%!important;box-sizing:border-box!important}
+.home-ticker{position:relative!important;display:flex!important;flex:none!important;min-height:48px!important;height:48px!important;z-index:5!important;visibility:visible!important;opacity:1!important}
+.home-ticker-viewport{height:100%;display:flex;align-items:center;overflow:hidden}
+@media(max-width:760px){
+ .hero{height:max(360px,calc(100svh - var(--sdus-space-above, 124px) - 48px))!important}
+ .hero .hero-inner{min-height:0!important;height:100%!important}
+}
+@media(max-height:560px){.hero{height:max(260px,calc(100svh - var(--sdus-space-above, 124px) - 48px))!important}}
