@@ -50,7 +50,7 @@ function News(){
    const url=import.meta.env.VITE_SUPABASE_URL,key=import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
    if(!url||!key){setError(true);setLoading(false);return;}
    try{
-    const endpoint=url.replace(/\/$/,'')+'/rest/v1/club_news?select=id,title,body,date,link,created_at&published=eq.true&order=created_at.desc&limit=50';
+    const endpoint=url.replace(/\/$/,'')+'/rest/v1/club_news?select=id,title,body,date,link,image_url,created_at&published=eq.true&order=created_at.desc&limit=50';
     const response=await fetch(endpoint,{headers:{apikey:key},signal:controller.signal});
     if(!response.ok)throw Error('Chargement impossible');
     const data=await response.json();setItems(Array.isArray(data)?data:[]);setError(false);
@@ -61,7 +61,7 @@ function News(){
  return <><Heading eyebrow="LA VIE DU CLUB" title="Actualités & événements" description="Toutes les nouvelles du club et les rendez-vous à venir."/><section className="section shell">
   {loading?<p>Chargement des actualités…</p>:error?<p>Les actualités sont temporairement indisponibles.</p>:items.length===0?<p>Aucune actualité publiée pour le moment. Revenez bientôt !</p>:<div className="public-news-grid">{items.map(item=><article className="public-news-card" key={item.id}>
    <div className="public-news-date"><CalendarDays size={17}/>{item.date?new Date(item.date+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'}):new Date(item.created_at).toLocaleDateString('fr-FR',{day:'numeric',month:'long',year:'numeric'})}</div>
-   <h2>{item.title}</h2><p>{item.body}</p>
+   {item.image_url&&<img className="public-news-image" src={item.image_url} alt={"Illustration : "+item.title} loading="lazy"/>}<h2>{item.title}</h2><p>{item.body}</p>
    {item.link&&/^https?:\/\//i.test(item.link)&&<a href={item.link} target="_blank" rel="noopener noreferrer" className="public-news-link">En savoir plus <ArrowUpRight size={16}/></a>}
   </article>)}</div>}
   <InstagramFeed/>
