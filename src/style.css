@@ -199,29 +199,18 @@ body{background:#f9fbfa}
 .join-club-photo{display:block;width:100%;height:350px;object-fit:cover;object-position:center 51%;border-radius:20px;box-shadow:0 20px 50px rgba(9,38,55,.13)}
 @media(max-width:800px){.join-club-layout{grid-template-columns:1fr}.join-club-photo{height:auto;max-height:400px;aspect-ratio:16/10;object-fit:cover}}
 
-/* Descriptions des cartes Ecole de tennis / Cours adultes */
-.feature-card .feature-description{margin:0;color:#f0f6f8;font-size:15px;line-height:1.5;max-width:48ch;text-wrap:pretty}
-@media(max-width:620px){.feature-card .feature-description{font-size:14px}}
-
-/* Refonte visuelle de l'assistant de choix - sans modifier les calculs ni les tarifs */
-#choisir-cours{background:radial-gradient(ellipse at 92% 5%,#dff5e9 0%,transparent 37%),linear-gradient(145deg,#f4f9fa,#eaf2f5);position:relative;overflow:hidden}
-#choisir-cours>.shell{max-width:1140px}
-#choisir-cours .kicker{letter-spacing:.16em}
-#choisir-cours h2{max-width:880px;letter-spacing:-.035em;line-height:1.08;margin:14px 0 18px}
-#choisir-cours>.shell>p{max-width:740px;font-size:16px;line-height:1.7;color:#526c7a}
-#choisir-cours .finder{max-width:100%;background:#fff;border:1px solid #e0ecea;border-radius:28px;padding:clamp(22px,4vw,48px);box-shadow:0 24px 75px rgba(11,48,61,.085);position:relative;margin-top:32px}
-#choisir-cours .finder::before{content:'TROUVEZ VOTRE FORMULE';display:block;color:#078653;font-size:11px;font-weight:900;letter-spacing:.16em;margin-bottom:30px}
-#choisir-cours .finder-step{padding:0 0 26px;margin:0 0 26px;border-bottom:1px solid #edf2f3}
-#choisir-cours .finder-step:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
-#choisir-cours .finder-step>strong{font-size:17px;letter-spacing:-.01em;color:#0d2d40;margin-bottom:18px}
-#choisir-cours .finder-options{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px}
-#choisir-cours .finder-options button{min-height:70px;border-radius:15px;border:1.5px solid #dce8eb;background:#f9fbfc;color:#12344a;padding:15px 20px;text-align:left;line-height:1.4;transition:background .18s,border-color .18s,box-shadow .18s,transform .18s;position:relative}
-#choisir-cours .finder-options button:hover{border-color:#05a65c;background:#f0faf5;transform:translateY(-2px);box-shadow:0 8px 18px rgba(3,85,56,.08)}
-#choisir-cours .finder-options button:focus-visible{outline:3px solid #12a969;outline-offset:3px}
-#choisir-cours .finder-options button.selected{border:2px solid #08a85c;background:linear-gradient(135deg,#e9f9f0,#f5fcf8);color:#06683f;box-shadow:0 5px 16px rgba(6,145,81,.09);padding-right:36px}
-#choisir-cours .finder-options button.selected::after{content:'✓';position:absolute;top:13px;right:13px;width:21px;height:21px;border-radius:50%;background:#0aa563;color:white;display:grid;place-items:center;font-size:13px}
-#choisir-cours .finder-result{border:1px solid #bce8d2;background:linear-gradient(135deg,#edfbf3,#f8fdfa);border-radius:20px;padding:clamp(20px,3vw,34px);margin-top:16px}
-#choisir-cours .finder-result h3{color:#0d3041}
-#choisir-cours .finder-price{font-size:clamp(36px,5vw,52px);letter-spacing:-.04em}
-#choisir-cours .finder-links{margin-top:24px}
-@media(max-width:650px){#choisir-cours .finder{border-radius:20px;padding:22px 18px}#choisir-cours .finder-options{grid-template-columns:1fr}#choisir-cours .finder-options button{min-height:58px}#choisir-cours .finder-step{padding-bottom:20px;margin-bottom:20px}}
+/* Cartes modernes des stages dans le calendrier */
+.stage-date-grid:has(.camp-modern-card){grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.camp-modern-card{background:#fff;border:1px solid #e1e9e9;border-radius:18px;overflow:hidden;box-shadow:0 12px 32px rgba(9,39,53,.08);display:flex;flex-direction:column;min-width:0}
+.camp-modern-image,.camp-modern-placeholder{display:block;width:100%;height:235px;object-fit:cover;object-position:center}
+.camp-modern-placeholder{background:linear-gradient(130deg,#0b3549,#137d72);color:white;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;letter-spacing:.13em}
+.camp-modern-placeholder strong{font-size:23px;letter-spacing:.02em}
+.camp-modern-content{padding:24px;display:flex;flex-direction:column;gap:9px;flex:1}
+.camp-modern-content h3{margin:5px 0 7px;font-size:clamp(21px,2vw,27px)}
+.camp-modern-badge{background:#e6f7ed;color:#08733f;border-radius:100px;padding:7px 12px;font-weight:800;font-size:12px;align-self:flex-start}
+.camp-modern-badge.closed{background:#f3f4f6;color:#6b7280}
+.camp-modern-date{font-weight:750;color:#0d3548;margin:0}.camp-modern-detail{margin:0;color:#536875}
+.camp-modern-description{white-space:pre-line;overflow-wrap:anywhere;line-height:1.55;margin:10px 0 14px;color:#516574}
+.camp-modern-cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:#00a86b;color:white;padding:13px 17px;border-radius:10px;font-weight:800;margin-top:auto;text-decoration:none;align-self:flex-start}
+.camp-modern-cta:hover{background:#008b5b;color:white}.camp-modern-disabled{margin-top:auto;font-weight:700;color:#667}
+@media(max-width:750px){.stage-date-grid:has(.camp-modern-card){grid-template-columns:1fr}.camp-modern-image,.camp-modern-placeholder{height:210px}}
